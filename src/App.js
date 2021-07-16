@@ -1,15 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
 import {createGlobalStyle} from 'styled-components'
 import { 
   BrowserRouter as Router, 
   Switch, 
   Route,
-  Link 
+  Link ,
+  NavLink
 } from 'react-router-dom'
 import lupa from './assets/lupa.png'
 import SlideShow from './Components/SlideShow'
 import Home from './Components/Home/index'
+import Filmes from './Components/Movies/index'
+import Series from './Components/TvShows/index'
 import BaseUrl from './Components/BaseUrl'
 import Trending from './Services/Trending'
 import axios from 'axios'
@@ -38,52 +40,19 @@ const GlobalStyle = createGlobalStyle `
 
 `
 
-const Header = Styleds.Header;
-const TopHeader = Styleds.TopHeader;
-const HeaderContainersMenu = Styleds.HeaderContainersMenu;
-const HeaderContainersSearcher = Styleds.HeaderContainersSearcher;
-const BackHeader = Styleds.BackHeader;
-const MarcPrime = Styleds.MarcPrime;
-const Menu = Styleds.Menu;
-const ItemsMenu = Styleds.ItemsMenu;
-const LabelForSeacher = styled.label `
-  border: #fff solid 1px;
-  display: flex;
-  align-items: center; 
-  
-`
-
-const Seacher = styled.input `
-  width: 200px;
-  height: 35px;
-  outline: none;
-  border-style: none;
-  background: #1A242F;
-  font-size: 1.1rem;
-  color: #fff;
-  
-  &::placeholder{
-    color: #fff;
-    
-  }
-
-`
-const SearcherImg = styled.img `
-  width: 25px;
-  margin: 3px;
-`
-
-const Container = styled.div `
-    display: flex;
-    max-width: 100vw;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 100vw;
-    margin: 3vw 0 0 0;
-`
-const Img = styled.img `
-  width: 200px;
-`
+const Header = Styleds.Header,
+ TopHeader = Styleds.TopHeader,
+ HeaderContainersMenu = Styleds.HeaderContainersMenu,
+ HeaderContainersSearcher = Styleds.HeaderContainersSearcher,
+ BackHeader = Styleds.BackHeader,
+ MarcPrime = Styleds.MarcPrime,
+ Menu = Styleds.Menu,
+ ItemsMenu = Styleds.ItemsMenu,
+ LabelForSeacher = Styleds.LabelForSeacher,
+ Seacher = Styleds.Seacher,
+ SearcherImg = Styleds.SearcherImg,
+ Container = Styleds.Container,
+ ImgBg = Styleds.ImgBg
 
 export default class App extends React.Component {
 
@@ -166,20 +135,20 @@ export default class App extends React.Component {
               </MarcPrime>
               <Menu>
                 <ItemsMenu>
-                  <Link to='/home' >Home</Link>
+                  <NavLink to='/home' activeStyle={{'textDecoration': 'underline', 'color': '#fff'}} >Home</NavLink>
                 </ItemsMenu>
                 <ItemsMenu >
-                  <Link to='/filmes'  >Filmes</Link>
+                  <NavLink to='/filmes' activeStyle={{'textDecoration': 'underline', 'color': '#fff'}} >Filmes</NavLink>
                 </ItemsMenu>
                 <ItemsMenu >
-                  <Link to='/series' >Séries</Link>
+                  <NavLink to='/series' activeStyle={{'textDecoration': 'underline', 'color': '#fff'}} >Séries</NavLink>
                 </ItemsMenu>
               </Menu>
             </HeaderContainersMenu>
             <HeaderContainersSearcher>
               <LabelForSeacher>
                 <SearcherImg src={lupa} />
-                <Seacher type='text' placeholder='Busca' value={this.state.busca} onChange={this.handleChange} onKeyUp={this.searchFilms} />
+                <Seacher type='text' placeholder='Busca' value={this.state.busca} onChange={this.handleChange} onKeyUp={this.searchFilms}  />
               </LabelForSeacher>
             </HeaderContainersSearcher>
           </TopHeader>
@@ -187,21 +156,23 @@ export default class App extends React.Component {
             <SlideShow />
           </BackHeader>
 
-          {(this.state.busca === '')? <Switch>
+          {(this.state.busca === '')
+          ? <Switch>
             <Route exact path='/' > 
               <Home />
             </Route>
             <Route path='/home' > 
-            <Home />
+              <Home />
             </Route>
             <Route path='/filmes' > 
-
+              <Filmes />
             </Route>
             <Route path='/series' > 
-
+              <Series />
             </Route>
-          </Switch> : <Container>{this.state.searchedFilms.map(item => (
-            <Img src={BaseUrl+item.poster_path} />
+          </Switch> 
+          :<Container style={{'marginTop':'3vw'}}>{this.state.searchedFilms.map(item => (
+            <ImgBg background={BaseUrl+item.poster_path} title={item.title || item.name} ></ImgBg>
           ))}</Container>}
 
         </Header>

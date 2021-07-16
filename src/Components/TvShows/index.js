@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import Trending from '../../Services/Trending'
+import TvShowsApi from '../../Services/TvShowsApi'
 import BaseUrl from '../BaseUrl'
 import Styleds from '../Styleds'
 
@@ -12,8 +12,7 @@ Title = Styleds.Title,
 SecondTitle = Styleds.SecondTitle,
 TitleContainer = Styleds.TitleContainer
 
-
-export default class Home extends React.Component {
+export default class Filmes extends React.Component {
 
     state= {
         trendings: []
@@ -25,7 +24,7 @@ export default class Home extends React.Component {
     }
 
     getShows = () => {
-        Trending.get()
+        TvShowsApi.get()
             .then( res => {
                 const resposta = res.data.results
                 this.setState({
@@ -33,7 +32,7 @@ export default class Home extends React.Component {
                 })
             })
 
-        axios.get('https://api.themoviedb.org/3/trending/all/day?api_key=5f806e98f1b3ee6e498219d17b4720cc&language=pt-BR&page=2')
+        axios.get('https://api.themoviedb.org/3/tv/popular?api_key=5f806e98f1b3ee6e498219d17b4720cc&language=pt-BR&page=2')
         .then(res => {
             const resposta = res.data.results;
             this.setState({
@@ -46,19 +45,19 @@ export default class Home extends React.Component {
 
     render (){
         return(
-           <>
-            <TitleContainer>
+            <>
+                <TitleContainer>
                 <Title>Prime</Title>
-                <SecondTitle>Os mais assistidos</SecondTitle>
+                <SecondTitle>As melhores séries</SecondTitle>
             </TitleContainer>
-             <Container>
-                {this.state.trendings.map(films => 
-                    <ImgBg background={BaseUrl+films.poster_path} >
-                        <InsideBg style={{'display': 'none'}} key={films.id} >olá mundo</InsideBg>
-                    </ImgBg>
-                )}
-            </Container>
-           </>
+                <Container>
+                    {this.state.trendings.map(films => 
+                        <ImgBg background={BaseUrl+films.poster_path} >
+                            <InsideBg style={{'display': 'none'}} key={films.id} >olá mundo</InsideBg>
+                        </ImgBg>
+                    )}
+                </Container>
+            </>
         )
     }
 }
