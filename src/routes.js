@@ -19,7 +19,7 @@ export default function Routes (props) {
             <Route path='/card'  > 
                 <Card />
              </Route>
-             <Route path='/s'  >
+             <Route path='/s' >
                  <Busca />
              </ Route>
             

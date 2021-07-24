@@ -1,9 +1,8 @@
-import React from 'react'
-import {createGlobalStyle} from 'styled-components'
-import Header from './Components/Header'
+import React from "react";
+import { createGlobalStyle } from "styled-components";
+import Header from "./Components/Header";
 
-
-const GlobalStyle = createGlobalStyle `
+const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
@@ -23,18 +22,15 @@ const GlobalStyle = createGlobalStyle `
     color: inherit;
   }
 
-`
-
+`;
 
 export default class App extends React.Component {
-
-  render(){
-  
-    return(
-      < >
+  render() {
+    return (
+      <>
         <GlobalStyle />
         <Header />
       </>
-    )
+    );
   }
 }

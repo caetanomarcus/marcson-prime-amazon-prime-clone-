@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 const ConnectedBusca = (shows) => {
   console.log(shows.shows)
     return (
-      <Cards title="Os mais assistidos" >
+      <Cards title="Seus resultados:" >
         {shows.shows.map((item) => {
           return <Generate films={item} />;
         })}

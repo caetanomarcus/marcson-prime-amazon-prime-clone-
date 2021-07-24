@@ -222,6 +222,7 @@ const Styleds = {
 
     CardTitle: styled.h2 `
         font-size: 2rem;
+        margin: 3rem;
 
     `,
 
@@ -229,13 +230,17 @@ const Styleds = {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        margin-bottom: .5rem;
 
        img{
-           width: 15%;
+           width: 25%;
+           border-radius: .5rem;
+           box-shadow: 2px 2px 2px #000f10;
        }
        p{
-           width: 60%;
+           width: 50%;
            font-size: 1.5rem;
+           line-height: 1.4;
        }
     `
 

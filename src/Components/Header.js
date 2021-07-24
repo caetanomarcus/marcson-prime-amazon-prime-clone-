@@ -1,6 +1,6 @@
 import React from "react";
 import Styleds from "./Styleds";
-import { Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Routes from "../routes";
 import SlideShow from "./SlideShow";
 import lupa from "../assets/lupa.png";
@@ -39,9 +39,9 @@ class HeaderConnected extends React.Component {
     this.getData();
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     const { searchedFilms } = this.state;
-    console.log(searchedFilms)
+    console.log(searchedFilms);
     this.props.addShows(searchedFilms);
   }
 
@@ -71,26 +71,24 @@ class HeaderConnected extends React.Component {
     this.setState({
       busca: e.target.value,
     });
-    
-    console.log(e.target.value)
-    if(!e.target.value.length){
+
+    if (!e.target.value.length) {
       this.setState({
-        searchedFilms: this.state.films
-      })
+        searchedFilms: this.state.films,
+      });
       const { searchedFilms } = this.state;
       this.props.addShows(searchedFilms);
-      return
-
-    } 
-      this.setState({
-        searchedFilms: this.state.films.filter(i => {
-          return this.removeAccents(i.title || i.name).toLowerCase().match(this.removeAccents(e.target.value).trim().toLowerCase())
-        })
-      })
-      const { searchedFilms } = this.state;
-      this.props.addShows(searchedFilms);
-   
-
+      return;
+    }
+    this.setState({
+      searchedFilms: this.state.films.filter((i) => {
+        return this.removeAccents(i.title || i.name)
+          .toLowerCase()
+          .match(this.removeAccents(e.target.value).trim().toLowerCase());
+      }),
+    });
+    const { searchedFilms } = this.state;
+    this.props.addShows(searchedFilms);
   };
 
   handleNavClick = () => {
@@ -110,7 +108,6 @@ class HeaderConnected extends React.Component {
 
     return text;
   };
-
 
   render() {
     return (
@@ -165,14 +162,14 @@ class HeaderConnected extends React.Component {
             <HeaderContainersSearcher>
               <LabelForSeacher>
                 <SearcherImg src={lupa} />
-                <Link to='/s' >
-                <Seacher
-                  type="text"
-                  placeholder="Busca"
-                  value={this.state.busca}
-                  onChange={this.handleChange}
-                  
-                />
+                <Link to="/s">
+                  <Seacher
+                    type="text"
+                    placeholder="Busca"
+                    value={this.state.busca}
+                    onChange={this.handleChange}
+                    onFocus={()=> this.setState({searchedFilms: this.state.films})}
+                  />
                 </Link>
               </LabelForSeacher>
             </HeaderContainersSearcher>
