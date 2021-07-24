@@ -13,7 +13,7 @@ const Styleds = {
         position: fixed;
         top:0;
         left: 0;
-        z-index: 10;
+        z-index: 101;
         background: #1A242F;
 
 `,
@@ -97,10 +97,10 @@ const Styleds = {
 
     Container : styled.div `
         display: flex;
-        max-width: 100vw;
+        
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 100vw;
+        
        
         min-height: 100vh;
 `,
@@ -111,7 +111,8 @@ const Styleds = {
 
     ImgBg : styled.div `
         background-image: url(${props => props.background}) ;
-        background-size: 100%; 
+        background-size: cover; 
+        background-repeat: no-repeat;
         width: 200px;
         height: 300px;
         margin: 1vw;
@@ -151,6 +152,91 @@ const Styleds = {
     TitleContainer: styled.div `
         display: flex;
         margin: 3vw 0 0 7vw;
+    `,
+
+    SlideShow: styled.div `
+        
+    
+    `,
+    SingleSlides: styled.div `
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 19.5vw;
+        background-image: url(${props => props.background});
+        background-repeat: no-repeat;
+        position: absolute;
+        background-size: 100%;
+        background-position: top center;
+        border: solide red 1px;
+        transition:  ease right -5s;
+        
+        right: 100%;
+
+        @keyframes indo {
+            0% {left: 0}
+            50%{left: 0}
+            75%{left: 0}
+            100% {left: -100%}
+        }
+    
+        @keyframes vindo {
+            0% {left:100%}
+            50%{left: 50%}
+            75%{left:0}
+            100%{left: -100}
+        }
+
+        
+    `,
+
+    Slides: styled.div `
+       position: relative;
+       overflow: hidden;
+
+        .btn-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 19.5vw;
+        }
+
+       button{
+           z-index:100;
+           
+       }
+    `,
+
+    SlideText : styled.h1 `
+    font-size: 3rem;
+    margin-left: 4rem;
+`,
+
+    CardContainer: styled.div `
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    `,
+
+    CardTitle: styled.h2 `
+        font-size: 2rem;
+
+    `,
+
+    CardBody: styled.div `
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+       img{
+           width: 15%;
+       }
+       p{
+           width: 60%;
+           font-size: 1.5rem;
+       }
     `
 
 

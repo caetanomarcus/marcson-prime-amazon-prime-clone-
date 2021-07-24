@@ -39,7 +39,7 @@ class SlideShow extends React.Component {
                 this.setState({
                     movies: movies
                 })
-                console.log(this.state.movies)
+                
             })
     }
 
