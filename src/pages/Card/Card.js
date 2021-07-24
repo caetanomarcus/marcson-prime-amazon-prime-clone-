@@ -16,7 +16,7 @@ export default function Card (){
         <CardContainer>
             <CardTitle>{data.name}</CardTitle>
             <CardBody>
-                <img src={data.poster} />
+                <img src={data.poster} alt={data.name}/>
                 <p>{data.overview}</p>
             </CardBody>
         </CardContainer>

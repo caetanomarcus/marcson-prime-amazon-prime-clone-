@@ -1,6 +1,6 @@
 import React from "react";
 import Styleds from "./Styleds";
-import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import Routes from "../routes";
 import SlideShow from "./SlideShow";
 import lupa from "../assets/lupa.png";

@@ -1,19 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Styleds from "./Styleds";
-import axios from "axios";
 
 const ImgBg = Styleds.ImgBg;
 
 export default function Generate(props) {
-  const getOverview = async (id) => {
-    const show = await axios.get(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=5f806e98f1b3ee6e498219d17b4720cc&language=en-US`
-    );
-    console.log(show.data.overview);
-
-    return await show.data.overview;
-  };
 
   function handleClick() {
    
