@@ -32,6 +32,7 @@ export default function Generate(props) {
 
     localStorage.setItem("showsInfo", JSON.stringify(showsInfo));
     console.log(props.films);
+    
   }
 
   return (

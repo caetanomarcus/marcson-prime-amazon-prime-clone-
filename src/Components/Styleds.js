@@ -3,6 +3,10 @@ import styled from "styled-components"
 const Styleds = {
     Header : styled.section `
         height: 25vw;
+
+        @media(max-width: 990px){
+            height: 25vh;
+        }
 `,
     TopHeader: styled.div `
         width: 100%;
@@ -16,6 +20,10 @@ const Styleds = {
         z-index: 101;
         background: #1A242F;
 
+        @media(max-width: 990px){
+            height: 10vh;
+        }
+
 `,
 
     HeaderContainersMenu : styled.div `
@@ -24,6 +32,11 @@ const Styleds = {
         justify-content: space-around;
         align-items: center; 
         margin-left: -5vw;
+
+        @media(max-width: 990px){
+            width: 60%;
+            margin-left: 5vw;
+        }
 `,
 
     HeaderContainersSearcher : styled.div `
@@ -32,16 +45,31 @@ const Styleds = {
         align-items: center;
         justify-content: flex-end;
 
+        @media(max-width: 990px){
+            width: 30%;
+            justify-content: center;
+        }
+
 `,
 
     BackHeader:styled.div `
         height: 80%;
         margin-top: 5.5vw; 
 
+        @media(max-width: 990px){
+            border: solid pink 1px;
+        }
+
 `,
 
     MarcPrime : styled.h1 `
         font-size: 1rem;
+       
+
+        @media(max-width: 990px){
+            font-size: 1.5rem;
+            width: 50vw;
+        }
        
 `,
 
@@ -53,6 +81,10 @@ const Styleds = {
         justify-content: space-evenly;
         color: #c4bdbc;
         font-weight: bold; 
+
+        @media(max-width: 990px){
+            display: none;
+        }
 `,
 
     ItemsMenu : styled.li `
@@ -72,6 +104,7 @@ const Styleds = {
         cursor: pointer;
     }
   
+    
 `,
 
     Seacher : styled.input `
@@ -86,6 +119,15 @@ const Styleds = {
         &::placeholder{
             color: #fff;
         
+        }
+
+        @media(max-width: 990px){
+            width: 1px;
+
+            &:focus {
+                width: 250px;
+                z-index: 10;
+            }
         }
 
 `,

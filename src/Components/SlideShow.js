@@ -15,11 +15,19 @@ const EachSlide = styled.div `
     background-repeat: no-repeat; 
     height: 19.5vw;
 
+    @media(max-width: 990px){
+            height: 20vh;
+        }
+
 `
 
 const SlideText = styled.h1 `
     font-size: 3rem;
     margin-left: 4rem;
+
+    @media(max-width: 990px){
+            font-size: 1rem;
+        }
 `
 
 class SlideShow extends React.Component {
